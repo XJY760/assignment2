@@ -1,0 +1,46 @@
+<h2>Manage Inventory</h2>
+
+<h3>Add New Item</h3>
+<input [(ngModel)]="newItem.name" placeholder="Name *">
+<input [(ngModel)]="newItem.supplier" placeholder="Supplier *">
+<input type="number" [(ngModel)]="newItem.quantity" placeholder="Quantity">
+<input type="number" [(ngModel)]="newItem.price" placeholder="Price">
+<select [(ngModel)]="newItem.category">
+  <option value="Electronics">Electronics</option>
+  <option value="Furniture">Furniture</option>
+  <option value="Clothing">Clothing</option>
+  <option value="Tools">Tools</option>
+  <option value="Miscellaneous">Miscellaneous</option>
+</select>
+<select [(ngModel)]="newItem.stockStatus">
+  <option value="In Stock">In Stock</option>
+  <option value="Low Stock">Low Stock</option>
+  <option value="Out of Stock">Out of Stock</option>
+</select>
+<select [(ngModel)]="newItem.popular">
+  <option value="Yes">Yes</option>
+  <option value="No">No</option>
+</select>
+<input [(ngModel)]="newItem.comment" placeholder="Comment">
+<button (click)="addItem()">Add Item</button>
+
+<h3>Update Item (by Name)</h3>
+<input [(ngModel)]="updateName" placeholder="Item name to update">
+<input type="number" [(ngModel)]="updateQuantity" placeholder="New Quantity">
+<input type="number" [(ngModel)]="updatePrice" placeholder="New Price">
+<button (click)="updateItem()">Update</button>
+
+<h3>All Items</h3>
+<table border="1">
+  <tr><th>Name</th><th>Category</th><th>Qty</th><th>Price</th><th>Supplier</th><th>Stock</th><th>Popular</th><th>Action</th></tr>
+  <tr *ngFor="let item of items">
+    <td>{{item.name}}</td>
+    <td>{{item.category}}</td>
+    <td>{{item.quantity}}</td>
+    <td>${{item.price}}</td>
+    <td>{{item.supplier}}</td>
+    <td>{{item.stockStatus}}</td>
+    <td>{{item.popular}}</td>
+    <td><button (click)="deleteItem(item.name)">Delete</button></td>
+  </tr>
+</table>
